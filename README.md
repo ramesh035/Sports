@@ -10,8 +10,8 @@ Angular: 6.1.4
 
 After creating the new project using ng new "project name" follow the below steps
 
-#Step 1:
-**Dependency to be installed **
+#Step 1: Dependency to be installed 
+
 npm install
 npm install rxjs-compat --save
 npm install bootstrap@3.3.7
