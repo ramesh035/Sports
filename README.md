@@ -1,21 +1,21 @@
 # Sports
 
 **Version Used **
-*Angular CLI: 6.0.8
-*Node: 8.11.3
-*OS: win32 x64
-*Angular: 6.1.4
+Angular CLI: 6.0.8
+Node: 8.11.3
+OS: win32 x64
+Angular: 6.1.4
 
 #Step 1:
 
-*After creating the new project using ng new "project name" follow the below steps
+After creating the new project using ng new "project name" follow the below steps
 
 #Step 1:
 **Dependency to be installed **
-*npm install
-*npm install rxjs-compat --save
-*npm install bootstrap@3.3.7
-*npm install jquery jquery-ui-dist
+npm install
+npm install rxjs-compat --save
+npm install bootstrap@3.3.7
+npm install jquery jquery-ui-dist
 
 #Step 2: Add following things in angular.json
 
