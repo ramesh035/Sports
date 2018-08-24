@@ -1,0 +1,157 @@
+<nav class="navbar navbar-default mainHeader">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#">Cricket</a>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="logged">Logged in <b>{{userName}} => ({{userRole}})</b>
+                    <div> <a class="logOut" [routerLink]="['/login']">Logout</a></div>
+                    </div>
+                </div>
+            </div>            
+
+        </div><!--/.container-fluid -->
+</nav>
+
+
+<div class="alert alert-danger" *ngIf="errorMsg">
+    <strong>{{this.errorMsg}}.</strong>
+</div>
+<div class="container">
+    <div class="row mainSec">
+        <!--First pane-->
+        <div class="col-sm-4">
+            <b class="success">{{deletedSuccess}}</b>
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#home" (click)="playercategory('country')">Country</a></li>
+                <li><a data-toggle="tab" href="#menu1" (click)="playercategory('role')">Player Role</a></li>
+            </ul>
+
+            <div class="tab-content">
+                <div id="home" class="tab-pane fade in active">
+                    <div class="panel-group" id="accordion">
+                        <div class="panel panel-default" *ngFor="let item of membermodal;  index as i">
+                            <div class="panel-heading">
+                                <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse{{i}}">{{item.country}}</a></h4>
+                            </div>
+                            <div id="collapse{{i}}" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <ul >
+                                        <li *ngFor="let value of item.groupItem; index as ii">
+                                        <div class="container1" (contextmenu)="showContextMenu($event,i,value.name);">
+                                        <a (click)="specificPlayer(i,ii)">{{value.name}}</a>
+                                        <div id="contextMenu{{i}}" class="context-menu">
+                                        <ul>
+                                        <li (click)="deletePlayer(nameDelete);">Remove {{nameDelete}}</li>
+                                        </ul>
+                                        </div>
+                                        </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div id="menu1" class="tab-pane fade">
+                    <div class="panel-group" id="accordion1">
+                        <div class="panel panel-default" *ngFor="let item of membermodal; index as i">
+                            <div class="panel-heading">
+                                <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion1" href="#collapseplayer{{i}}">{{item.role}}</a></h4>
+                            </div>                    
+                            <div id="collapseplayer{{i}}" class="panel-collapse collapse">
+                                <div class="panel-body">                        
+                                    <ul >
+                                        <li *ngFor="let value of item.groupItem; index as ii">
+                                            <div class="container1" (contextmenu)="showContextMenu($event,i,value.name);">
+                                            <a (click)="specificPlayer(i,ii)">{{value.name}}</a>
+                                        <div id="contextMenuRole{{i}}" class="context-menu">
+                                        <ul>
+                                        <li (click)="deletePlayer(nameDelete);">Remove {{nameDelete}}</li>
+                                        </ul>
+                                        </div>
+                                        </div>                                        
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             </div>   
+        </div>
+        <!--END First pane-->
+        <!-- Second pane-->
+        <div class="col-sm-4">
+            <div *ngIf="specificmembermodal">
+                <div id="draggable" class="ui-widget-content">
+                <img class="imageStyle" src="{{this.specificmembermodal.photo}}" width="200" height="200" />
+                </div>
+            </div>
+        </div>
+        <!-- End Second pane-->
+        <!-- Third pane-->
+        <div class="col-sm-4" *ngIf="hideloadedform == false">
+            <div *ngIf="specificmembermodal">
+                <h2>Update Player Details</h2>
+                <b class="success">{{submittedSuccess}} </b>
+                <form class="form-horizontal" novalidate (ngSubmit)="updatePlayer(playerForm.value)" [formGroup]="playerForm">
+
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input class="form-control" type="text" placeholder="Name is required" [readonly]="isReadOnly" (dblclick)="edit();" [(ngModel)]="specificmembermodal.name"
+                            formControlName="name" [value]="specificmembermodal.name" />
+                    </div>
+                    <div class="form-group">
+                        <label>Country</label>
+                        <input class="form-control" type="text" placeholder="Country is required" [readonly]="isReadOnly" (dblclick)="edit();" [(ngModel)]="specificmembermodal.country"
+                            formControlName="country" [value]="specificmembermodal.country" />
+                    </div>
+                    <div class="form-group">
+                        <label>Role</label>
+                        <input class="form-control" type="text" placeholder="Role is required" [readonly]="isReadOnly" (dblclick)="edit();" [(ngModel)]="specificmembermodal.role"
+                            formControlName="role" [value]="specificmembermodal.role" />
+                        <input class="form-control" type="hidden"  [(ngModel)]="specificmembermodal.id" formControlName="id" [value]="specificmembermodal.id"
+                        />
+                    </div>
+                    <button *ngIf="this.userRole == 'admin'" class="btn btn-default" (click)="addnewplayer();" type="button">Add New Player</button>
+                    <button *ngIf="this.userRole == 'admin'" class="btn btn-default" type="submit" [disabled]='!playerForm.valid'>Save</button>
+                </form>
+            </div>
+        </div>
+        <!-- End Third pane-->
+        <!-- Third pane-->
+        <div class="col-sm-4" *ngIf="hideloadedform == true">
+            <div *ngIf="specificmembermodal">
+                <h2>Add New Player</h2>
+                <b class="success">{{submittedSuccess1}} </b>
+                <form class="form-horizontal" novalidate (ngSubmit)="addPlayer(playerForm1.value)" [formGroup]="playerForm1">
+
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input class="form-control" type="text" placeholder="Name is required" formControlName="name" />
+                    </div>
+                    <div class="form-group">
+                        <label>Country</label>
+                        <input class="form-control" type="text" placeholder="Country is required" formControlName="country" />
+                    </div>
+                    <div class="form-group">
+                        <label>Role</label>
+                        <input class="form-control" type="text" placeholder="Role is required" formControlName="role" />
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="hidden" formControlName="photo" />
+                        <input class="form-control" type="hidden" [(ngModel)]="idvalue" [value]="idvalue" formControlName="id" />
+                    </div>
+
+                    <button class="btn btn-default" type="submit" [disabled]='!playerForm1.valid'>Save</button>
+                </form>
+            </div>
+        </div>
+        <!-- End Third pane-->
+    </div>
+</div>

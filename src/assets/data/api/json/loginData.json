@@ -1,0 +1,6 @@
+{
+	"username" : "ramesh",
+	"password" : "ramesh123",
+	"role" : "admin",
+    "token"    : "fake-jwt-token"
+}

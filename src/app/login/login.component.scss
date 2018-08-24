@@ -1,0 +1,72 @@
+.form-horizontal .form-group{
+    margin: 0;
+}
+h2 {
+    color: #000;
+    font-size: 60px;
+    margin-top: 0;
+}
+.loginform label{
+    font-size: 16px;
+    color: #000;
+}
+.loginform .form-control {
+    border: 2px solid #cccccc;
+    border-radius: 0;
+    font-size: 16px;
+    height: 40px;
+    box-shadow: none;
+    outline: 0;
+    color: #000;    
+}
+.loginform .form-control:active,.loginform .form-control:focus {
+    border: 2px solid #999999;
+}
+.loginform .form-group {
+    color: #000;
+    padding-bottom: 20px;
+}
+.loginform .btn-default {
+    background: #F16E00 none repeat scroll 0 0;
+    border-radius: 0;
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 20px;
+    padding: 9px 19px;
+    opacity: inherit;
+    border: 1px solid #F16E00;
+    box-shadow: none;
+    outline: 0
+}
+.loginform .btn-default:hover {
+     background: #000000 none repeat scroll 0 0;
+     border: 1px solid #000;
+      outline: 0
+}
+.loginform .btn-default:active {
+    background: #FFFFFF none repeat scroll 0 0;
+    color: #000;
+    border: 1px solid #000;
+     outline: 0
+    
+}
+
+
+.text-danger {
+    color: red;
+    margin-top: 36px;
+}
+
+.loginform .form-control.has-error{
+    border: 2px solid red;
+}
+
+
+.loginform .form-group.logIn{
+    padding-bottom: 0px;
+}
+.loginform .form-group.logIn .btn{
+    margin-bottom: 15px;
+}
+
+ 

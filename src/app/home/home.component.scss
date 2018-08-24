@@ -1,0 +1,113 @@
+
+.mainSec{
+    margin-top: 20px;
+}
+
+.logged{
+    text-align: right;
+    padding-top: 5px;
+}
+
+h2 {
+    color: #000;
+    font-size: 30px;
+    margin-top: 0;
+}
+
+.success{
+    color: green;
+    padding: 10px 0;
+    font-weight: bold;
+}
+.form-horizontal .form-group{
+    margin: 10px 0px;
+}
+.imageStyle{
+    width: 80%;
+    height: 80%;
+    cursor: all-scroll;
+}
+.btn-default{
+    margin-right: 20px;
+    margin-top: 7px;
+}
+.nav-tabs {
+    border-bottom: none;
+}
+.panel-group .panel {
+    margin-bottom: 0;
+    border-radius: 0px;
+}
+div#draggable {
+    z-index: 1;
+}
+
+nav.navbar.navbar-default.mainHeader {
+    background: #000;
+    color: #fff;
+}
+.navbar-brand{
+    color: #fff;
+    font-weight: bold;
+}
+
+ .container1{
+	min-height: 15px;
+	z-index: 2;
+}
+
+
+.context-menu{
+    width: 200px;
+    height: auto;
+    box-shadow: 0 0 20px 0 #ccc;
+    position: absolute;
+    display: none;
+    margin-top: -109px;
+    margin-left: 0px !important;
+    z-index: 2;
+    background: #ccc;
+    font-weight: bold;
+    left: 200px !important;
+}
+
+.context-menu ul{
+	list-style: none;
+	padding: 5px 0px 5px 0px;
+}
+
+.context-menu ul li:not(.separator){
+	padding: 10px 5px 10px 5px;
+	border-left: 4px solid transparent;
+	cursor: pointer;
+}
+
+.context-menu ul li:hover{
+	background: none;
+	border-left: 4px solid #666;
+}
+
+.separator{
+	height: 1px;
+	background: #dedede;
+	margin: 2px 0px 2px 0px;
+}
+
+.placeholder {
+	    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    font-size: 20px;
+    color: #333;
+}
+
+.a:focus, a:hover{
+    cursor: pointer;
+}
+
+@media (min-width: 1200px){
+.container {
+    width: 970px;
+}
+}
